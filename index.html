@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Mes de Amor</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
+    
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #f5d0a9; /* Color de fondo suave */
+            font-family: 'Poppins', sans-serif; /* Fuente elegante */
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            width: 20rem;
+            height: 20rem;
+            padding: 1.5rem;
+            border-radius: .8rem;
+            text-align: center;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        div button {
+            margin-top: 1rem;
+            padding: 0.9rem 2rem;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: .3s all;
+            width: max-content;
+        }
+
+        div button:first-of-type {
+            background-color: #ff4b5c;
+            color: white;
+        }
+
+        div button:first-of-type:hover {
+            background-color: #ff2f3a;
+            transform: scale(1.05);
+        }
+
+        div button:last-of-type {
+            background-color: #d1d1d1;
+            color: #333;
+        }
+
+        div button:last-of-type:hover {
+            background-color: #b3b3b3;
+            transform: scale(1.05);
+        }
+
+        div span {
+            color: #ff4b5c;
+            font-weight: 600;
+        }
+
+        #accept {
+            display: none;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Estilo para los corazones animados */
+        .heart {
+            position: absolute;
+            font-size: 3rem;
+            color: #ff6b81;
+            animation: moveHearts 6s ease-in-out infinite;
+            animation-timing-function: ease-in-out;
+        }
+
+        /* Mover los corazones en la pantalla */
+        @keyframes moveHearts {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            25% {
+                transform: translateY(-50px) translateX(100px);
+            }
+            50% {
+                transform: translateY(0) translateX(200px);
+            }
+            75% {
+                transform: translateY(50px) translateX(100px);
+            }
+            100% {
+                transform: translateY(0) translateX(0);
+            }
+        }
+
+        .ig {
+            position: absolute;
+            left: 0.5vw;
+            bottom: 0.5vw;
+            display: flex;
+        }
+
+        /* Hacer que los corazones se distribuyan bien en todas las resoluciones */
+        @media (max-width: 768px) {
+            .heart {
+                font-size: 2rem;
+            }
+            #content {
+                width: 18rem;
+                height: 18rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Corazones animados distribuidos por la pantalla -->
+    <span class="heart" style="top: 10%; left: 30%;">❤️</span>
+    <span class="heart" style="top: 20%; left: 60%;">💖</span>
+    <span class="heart" style="top: 30%; left: 80%;">❤️</span>
+    <span class="heart" style="top: 40%; left: 50%;">💖</span>
+    <span class="heart" style="top: 50%; left: 10%;">❤️</span>
+    <span class="heart" style="top: 60%; left: 70%;">💖</span>
+    <span class="heart" style="top: 70%; left: 40%;">❤️</span>
+    <span class="heart" style="top: 80%; left: 80%;">💖</span>
+    <span class="heart" style="top: 90%; left: 20%;">❤️</span>
+
+    <div id="content">
+        <span style="font-size: 3.5rem;"><i class="fa-regular fa-heart fa-beat"></i></span>
+        <span style="font-size: 1.5rem;">Mi amor, ¿Me dejarías estar a tu lado para toda la vida?</span>
+        <button>¡Sí!💖</button>
+        <button>No</button>
+    </div>
+
+    <div id="accept">
+        <!-- GIF añadido aquí -->
+        <img src="https://media1.tenor.com/m/uJZDe916GaAAAAAC/kiss-i-love-you.gif" alt="Celebration GIF" style="width: 12rem; margin-bottom: 1rem;">
+        <span style="font-size: 2rem;">¡¡¡UYYYYY u.u!!!</span>
+        <span>❤️ Feliz #4 Mi niña hermosa ❤️</span>
+        <span>❤️ Eres lo mejor que me ha pasado ❤️</span>
+    </div>
+
+    <span class="ig" style="font-size: .5rem; color: rgb(145, 4, 77); font-weight: bold;"></span>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const noButton = document.querySelector("button:last-of-type");
+            const yesButton = document.querySelector("button:first-of-type");
+            const content = document.getElementById("content");
+            const acceptDiv = document.getElementById("accept");
+
+            let yesButtonSize = 1.2;
+
+            const noResponses = [
+                "¿Estás segura? 😶‍🌫️",
+                "No es un sí todavía 😔",
+                "Un no definitivo? 🥲",
+                "AÑA 💭",
+                "Te lo repito chi? 😅",
+                "Dime que SIIIII! 🥹",
+                "Vamos por más amor! 💓",
+                "es un si?",
+                "segura -.-?",
+                "segurisimaaa?",
+                "Ultima chance eh -.-",
+                "SIIIIII?",
+                "🥲",
+                "Por favor T-T",
+                "Yo te amaré toda la vidaaaa"
+            ];
+
+            let currentResponseIndex = 0;
+
+            noButton.addEventListener("click", function () {
+                const currentResponse = noResponses[currentResponseIndex];
+                noButton.textContent = currentResponse;
+
+                const contentRect = content.getBoundingClientRect();
+                const maxX = contentRect.width - noButton.offsetWidth;
+                const maxY = contentRect.height - noButton.offsetHeight;
+
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
+
+                noButton.style.position = "absolute";
+                noButton.style.left = `${randomX}px`;
+                noButton.style.top = `${randomY}px`;
+
+                yesButtonSize += 0.2;
+                yesButton.style.fontSize = `${yesButtonSize}rem`;
+                yesButton.style.padding = `${yesButtonSize * 0.6}rem ${yesButtonSize * 0.9}rem`;
+
+                currentResponseIndex++;
+
+                if (currentResponseIndex === noResponses.length) {
+                    setTimeout(() => {
+                        noButton.style.display = "none";
+                    }, 0);
+                }
+            });
+
+            // Mostrar el div "accept" cuando se presione el botón "¡Sí!💖"
+            yesButton.addEventListener("click", function () {
+                acceptDiv.style.display = "flex";  // Muestra el div
+                content.style.display = "none";  // Muestra el div
+
+            });
+        });
+    </script>
+</body>
+</html>
