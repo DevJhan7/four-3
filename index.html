@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-color: #F5E1A4; /* Fondo color piel */
+      background-color: #F5E1A4;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -17,10 +17,9 @@
       padding: 0;
       color: #000;
       position: relative;
-      flex-direction: column; /* Alinea los elementos en columna */
+      flex-direction: column;
     }
 
-    /* Cuadro principal con estilo moderno */
     .card {
       background: linear-gradient(135deg, #ff5f6d, #ffc3a0);
       border-radius: 25px;
@@ -34,7 +33,6 @@
       position: relative;
     }
 
-    /* Animación de desvanecimiento */
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -44,7 +42,6 @@
       }
     }
 
-    /* Punto de luz que se mueve alrededor del borde */
     .moving-light {
       position: absolute;
       top: 0;
@@ -54,10 +51,9 @@
       background-color: #00bcd4;
       border-radius: 50%;
       animation: moveLight 5s linear infinite;
-      box-shadow: 0 0 15px rgba(0, 188, 212, 0.7), 0 0 25px rgba(0, 188, 212, 0.5); /* Rastro de luz */
+      box-shadow: 0 0 15px rgba(0, 188, 212, 0.7), 0 0 25px rgba(0, 188, 212, 0.5);
     }
 
-    /* Animación para el punto de luz */
     @keyframes moveLight {
       0% { top: 0; left: 0; }
       25% { top: 0; left: 98.5%; }
@@ -66,7 +62,6 @@
       100% { top: 0; left: 0; }
     }
 
-    /* Título */
     h1 {
       font-size: 32px;
       color: #00bcd4;
@@ -74,7 +69,6 @@
       text-align: center;
     }
 
-    /* Estilo del recuadro de introducción */
     .intro-box {
       background-color: rgba(255, 255, 255, 0.1);
       padding: 20px;
@@ -88,11 +82,6 @@
       font-size: 18px;
     }
 
-    .intro-box p {
-      line-height: 1.6;
-    }
-
-    /* Estilo del recuadro de las 50 cosas */
     .things-box {
       background-color: rgba(255, 255, 255, 0.1);
       padding: 20px;
@@ -147,14 +136,14 @@
       transform: scale(1.3);
     }
 
-    /* GIFs en los costados */
     .gif-left, .gif-right {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 300px;  /* Ajusté el tamaño de los GIFs */
+      width: 300px;
       height: auto;
       z-index: 1;
+      transition: all 0.3s ease;
     }
 
     .gif-left {
@@ -165,6 +154,21 @@
       right: 20px;
     }
 
+    /* Estilo para dispositivos móviles */
+    @media (max-width: 768px) {
+      .gif-left, .gif-right {
+        width: 200px;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .arrow-btn {
+        font-size: 32px;
+      }
+    }
+
     /* Estilo del iframe de YouTube */
     .youtube-background {
       position: absolute;
@@ -172,129 +176,96 @@
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1; /* Asegura que esté detrás del contenido */
-      pointer-events: none; /* Evita que el iframe interfiera con la interacción del usuario */
+      z-index: -1;
+      pointer-events: none;
     }
 
-    /* Estilo del contenedor de audio */
     .audio-container {
-      margin-top: 20px; /* Espaciado entre el recuadro y el audio */
-    }
-
-    /* Media Query para dispositivos móviles */
-    @media (max-width: 768px) {
-      .gif-left, .gif-right {
-        width: 150px; /* Hacer los GIFs más pequeños en dispositivos móviles */
-        left: 10px;
-        right: 10px;
-      }
-
-      h1 {
-        font-size: 24px; /* Reducir el tamaño del título en dispositivos móviles */
-      }
-
-      .intro-box, .things-box {
-        padding: 15px; /* Ajustar el padding en pantallas pequeñas */
-        max-height: 200px; /* Reducir el tamaño del recuadro */
-      }
-
-      .things-box .phrase {
-        font-size: 20px; /* Reducir el tamaño de la frase */
-      }
-
-      .audio-container {
-        margin-top: 15px; /* Reducir espacio para el reproductor de audio */
-      }
-    }
-
-    /* Media Query para pantallas más grandes */
-    @media (min-width: 1024px) {
-      .gif-left, .gif-right {
-        width: 350px; /* Aumentar el tamaño de los GIFs en pantallas grandes */
-      }
+      margin-top: 20px;
     }
   </style>
 </head>
   
-<div class="card">
-  <h1>¡Feliz Aniversario, mi amor! ❤️</h1>
+<body>
+  <div class="card">
+    <h1>¡Feliz Aniversario, mi amor! ❤️</h1>
 
-  <!-- Recuadro de Introducción -->
-  <div class="intro-box">
-    <p>Hoy celebro con todo mi corazón estos 3 maravillosos años a tu lado. Gracias por cada sonrisa, cada abrazo, y cada momento juntos. Te amo más de lo que las palabras pueden expresar, y este es solo un pequeño detalle para recordarte lo increíble que eres.</p>
-    <p>Espero que disfrutes cada una de las 50 cosas que me gustan de ti, ¡porque cada una es especial y única, como tú!</p>
-  </div>
-
-  <!-- Recuadro de las 50 cosas que me gustan -->
-  <div class="things-box">
-    <div class="phrase" id="phrase">Tu sonrisa ilumina mi día ✨</div>
-    <div class="pagination-dots">
-      <button class="arrow-btn" onclick="prevPhrase()">←</button>
-      <div id="dots" class="d-flex"></div>
-      <button class="arrow-btn" onclick="nextPhrase()">→</button>
+    <!-- Recuadro de Introducción -->
+    <div class="intro-box">
+      <p>Hoy celebro con todo mi corazón estos 3 maravillosos años a tu lado. Gracias por cada sonrisa, cada abrazo, y cada momento juntos. Te amo más de lo que las palabras pueden expresar, y este es solo un pequeño detalle para recordarte lo increíble que eres.</p>
+      <p>Espero que disfrutes cada una de las 50 cosas que me gustan de ti, ¡porque cada una es especial y única, como tú!</p>
     </div>
+
+    <!-- Recuadro de las 50 cosas que me gustan -->
+    <div class="things-box">
+      <div class="phrase" id="phrase">Tu sonrisa ilumina mi día ✨</div>
+      <div class="pagination-dots">
+        <button class="arrow-btn" onclick="prevPhrase()">❤️</button>
+        <div id="dots" class="d-flex"></div>
+        <button class="arrow-btn" onclick="nextPhrase()">❤️</button>
+      </div>
+    </div>
+
+    <!-- Punto de luz -->
+    <div class="moving-light"></div>
   </div>
 
-  <!-- Punto de luz -->
-  <div class="moving-light"></div>
-</div>
+  <!-- GIFs -->
+  <img class="gif-left" src="https://i.pinimg.com/originals/d7/1b/34/d71b341af9242b69b3331aae8f968750.gif" alt="gif-left">
+  <img class="gif-right" src="https://i.pinimg.com/originals/85/02/91/850291c8a4f7c3b924fa9cc7a2257482.gif" alt="gif-right">
 
-<!-- GIFs -->
-<img class="gif-left" src="https://i.pinimg.com/originals/d7/1b/34/d71b341af9242b69b3331aae8f968750.gif" alt="gif-left">
-<img class="gif-right" src="https://i.pinimg.com/originals/85/02/91/850291c8a4f7c3b924fa9cc7a2257482.gif" alt="gif-right">
-
-<!-- Contenedor del reproductor de audio -->
-<div class="audio-container">
+  <!-- Contenedor del reproductor de audio -->
+  <div class="audio-container">
     <audio controls autoplay>
         <source src="https://devjhan7.github.io/four-3/musiquita.mp3" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
     </audio>      
-</div>
+  </div>
 
-<script>
-  const phrases = [
-    "Tu sonrisa ilumina mi día ✨", "Me encanta cómo me haces reír 😂", "Eres mi lugar seguro 🏡",
-    "Tu voz me calma 💖", "Siempre me inspiras a ser mejor 🌟", "Tus abrazos son mi medicina 🫂",
-    "Tu paciencia me sorprende 😌", "Tienes el corazón más grande ❤️", "Me entiendes sin hablar 🧠",
-    "Siempre sabes qué decir 🗣️", "Tomas mi mano y todo está bien 🤝", "Compartimos sueños juntos 🌙",
-    "Amas con el alma 💞", "Eres divertido(a) sin esfuerzo 😄", "Tus ojitos son mágicos 👀"
-  ];
+  <script>
+    const phrases = [
+      "Tu sonrisa ilumina mi día ✨", "Me encanta cómo me haces reír 😂", "Eres mi lugar seguro 🏡",
+      "Tu voz me calma 💖", "Siempre me inspiras a ser mejor 🌟", "Tus abrazos son mi medicina 🫂",
+      "Tu paciencia me sorprende 😌", "Tienes el corazón más grande ❤️", "Me entiendes sin hablar 🧠",
+      "Siempre sabes qué decir 🗣️", "Tomas mi mano y todo está bien 🤝", "Compartimos sueños juntos 🌙",
+      "Amas con el alma 💞", "Eres divertido(a) sin esfuerzo 😄", "Tus ojitos son mágicos 👀"
+    ];
 
-  let index = 0;
-  const phraseEl = document.getElementById("phrase");
-  const dotsEl = document.getElementById("dots");
+    let index = 0;
+    const phraseEl = document.getElementById("phrase");
+    const dotsEl = document.getElementById("dots");
 
-  function renderPhrase() {
-    phraseEl.style.opacity = 0;
-    setTimeout(() => {
-      phraseEl.textContent = phrases[index];
-      phraseEl.style.opacity = 1;
-    }, 200);
-    renderDots();
-  }
-
-  function renderDots() {
-    dotsEl.innerHTML = '';
-    for (let i = 0; i < phrases.length; i++) {
-      const dot = document.createElement("div");
-      dot.classList.add("dot");
-      if (i === index) dot.classList.add("active");
-      dotsEl.appendChild(dot);
+    function renderPhrase() {
+      phraseEl.style.opacity = 0;
+      setTimeout(() => {
+        phraseEl.textContent = phrases[index];
+        phraseEl.style.opacity = 1;
+      }, 200);
+      renderDots();
     }
-  }
 
-  function nextPhrase() {
-    index = (index + 1) % phrases.length;
+    function renderDots() {
+      dotsEl.innerHTML = '';
+      for (let i = 0; i < phrases.length; i++) {
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        if (i === index) dot.classList.add("active");
+        dotsEl.appendChild(dot);
+      }
+    }
+
+    function nextPhrase() {
+      index = (index + 1) % phrases.length;
+      renderPhrase();
+    }
+
+    function prevPhrase() {
+      index = (index - 1 + phrases.length) % phrases.length;
+      renderPhrase();
+    }
+
     renderPhrase();
-  }
-
-  function prevPhrase() {
-    index = (index - 1 + phrases.length) % phrases.length;
-    renderPhrase();
-  }
-
-  renderPhrase();
-</script>
+  </script>
 
 </body>
 </html>
