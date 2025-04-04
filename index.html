@@ -180,6 +180,39 @@
     .audio-container {
       margin-top: 20px; /* Espaciado entre el recuadro y el audio */
     }
+
+    /* Media Query para dispositivos móviles */
+    @media (max-width: 768px) {
+      .gif-left, .gif-right {
+        width: 150px; /* Hacer los GIFs más pequeños en dispositivos móviles */
+        left: 10px;
+        right: 10px;
+      }
+
+      h1 {
+        font-size: 24px; /* Reducir el tamaño del título en dispositivos móviles */
+      }
+
+      .intro-box, .things-box {
+        padding: 15px; /* Ajustar el padding en pantallas pequeñas */
+        max-height: 200px; /* Reducir el tamaño del recuadro */
+      }
+
+      .things-box .phrase {
+        font-size: 20px; /* Reducir el tamaño de la frase */
+      }
+
+      .audio-container {
+        margin-top: 15px; /* Reducir espacio para el reproductor de audio */
+      }
+    }
+
+    /* Media Query para pantallas más grandes */
+    @media (min-width: 1024px) {
+      .gif-left, .gif-right {
+        width: 350px; /* Aumentar el tamaño de los GIFs en pantallas grandes */
+      }
+    }
   </style>
 </head>
   
@@ -211,14 +244,12 @@
 <img class="gif-right" src="https://i.pinimg.com/originals/85/02/91/850291c8a4f7c3b924fa9cc7a2257482.gif" alt="gif-right">
 
 <!-- Contenedor del reproductor de audio -->
-<!-- Contenedor del reproductor de audio -->
 <div class="audio-container">
-  <audio controls autoplay>
-    <source src="https://devjhan7.github.io/four-3/musiquita.mp3" type="audio/mpeg">
-    Tu navegador no soporta el elemento de audio.
-  </audio>
+    <audio controls autoplay>
+        <source src="https://devjhan7.github.io/four-3/musiquita.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>      
 </div>
-
 
 <script>
   const phrases = [
