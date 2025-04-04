@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
+  /* General Styles */
   body {
     background-color: #f7f3e9; /* Fondo suave */
     min-height: 100vh;
@@ -22,6 +23,7 @@
     overflow-x: hidden; /* Evita el scroll horizontal */
   }
 
+  /* Ajuste del estilo de la tarjeta */
   .card {
     background: linear-gradient(135deg, #d4af37, #f4c542); /* Colores dorados y cálidos */
     border-radius: 25px;
@@ -33,17 +35,59 @@
     backdrop-filter: blur(10px);
     transition: transform 0.3s ease-in-out;
     position: relative;
-    overflow: hidden; /* Evita desbordes */
+    overflow: hidden;
   }
 
-  h1 {
-    font-size: 32px;
-    color: #3b3a36;
-    margin-bottom: 30px;
-    text-align: center;
-    font-weight: 600;
+  /* Estilo de los GIFs */
+  .gif-left, .gif-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100px; /* Tamaño reducido para pantallas más grandes */
+    height: auto;
+    z-index: 1;
+    max-width: 100%;
+    max-height: 120px;
   }
 
+  /* Para móvil, ajustamos el tamaño y la posición */
+  @media (max-width: 768px) {
+    .gif-left, .gif-right {
+      position: relative;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      width: 80px; /* Reducido aún más para móviles */
+      height: auto;
+      max-width: 100%;
+      max-height: 80px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Ajuste para la flecha */
+    .arrow-btn {
+      font-size: 32px;
+    }
+
+    /* Ajustes adicionales para evitar desbordamiento */
+    .intro-box, .things-box {
+      padding: 15px;
+    }
+  }
+
+  /* Ajuste para pantallas grandes (PC) */
+  @media (min-width: 769px) {
+    .gif-left {
+      left: 10px; /* Posición en el lado izquierdo */
+    }
+
+    .gif-right {
+      right: 10px; /* Posición en el lado derecho */
+    }
+  }
+
+  /* Estilo para las cajas de texto */
   .intro-box {
     background-color: rgba(255, 255, 255, 0.1);
     padding: 20px;
@@ -120,79 +164,13 @@
     transform: scale(1.3);
   }
 
-  /* Estilo para los GIFs */
-  .gif-left, .gif-right {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 120px; /* Tamaño reducido */
-    height: auto;
-    z-index: 1;
-    max-width: 100%; /* Asegura que el gif se ajuste al contenedor */
-    max-height: 120px; /* Limita la altura */
+  /* Ajustes para el reproductor de audio */
+  .audio-container {
+    margin-top: 20px;
   }
-
-  .gif-left {
-    left: 10px;
-  }
-
-  .gif-right {
-    right: 10px;
-  }
-
-  /* Ajustes para dispositivos móviles */
-  @media (max-width: 768px) {
-    .gif-left, .gif-right {
-      position: relative;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      left: auto;
-      right: auto;
-      width: 80px; /* Ajuste para móviles */
-      max-width: 100%; /* Asegura que no se desborde */
-      height: auto;
-      max-height: 80px; /* Limita la altura */
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .arrow-btn {
-      font-size: 32px;
-    }
-
-    /* Ajuste para el contenedor de audio en móviles */
-    .audio-container {
-      margin-top: 20px;
-    }
-  }
-
-  /* Para pantallas grandes (PC), los GIFs deben estar a los costados */
-  @media (min-width: 769px) {
-    .gif-left, .gif-right {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 120px; /* Tamaño reducido */
-      height: auto;
-      z-index: 1;
-      max-width: 100%;
-      max-height: 120px;
-    }
-
-    .gif-left {
-      left: 10px;
-    }
-
-    .gif-right {
-      right: 10px;
-    }
-  }
-
 </style>
-
 </head>
-  
+
 <body>
   <div class="card">
     <h1>¡Feliz Aniversario, mi amor! ❤️</h1>
@@ -213,11 +191,9 @@
       </div>
     </div>
 
-    <!-- Punto de luz -->
-    <div class="moving-light"></div>
   </div>
 
-  <!-- GIFs (debajo del recuadro de notas en dispositivos móviles) -->
+  <!-- GIFs -->
   <div class="gif-left">
     <img src="https://i.pinimg.com/originals/d7/1b/34/d71b341af9242b69b3331aae8f968750.gif" alt="gif-left">
   </div>
