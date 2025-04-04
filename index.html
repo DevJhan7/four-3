@@ -61,7 +61,17 @@
     margin-bottom: 40px;
     opacity: 0;
     animation: fadeIn 0.6s ease-in-out forwards;
-  }
+    word-wrap: break-word; /* Permite que las palabras largas se ajusten dentro del contenedor */
+    overflow-wrap: break-word; /* Para asegurar el ajuste en todos los casos */
+    max-width: 100%; /* No dejar que el contenedor se haga más grande que su espacio disponible */
+    white-space: normal; /* Permite que las líneas se ajusten en varias filas */
+}
+
+.things-box {
+  font-size: 1.2rem; /* Tamaño de fuente estándar */
+  line-height: 1.5; /* Espaciado entre las líneas de texto */
+}
+
 
   @keyframes fadeIn {
     from { opacity: 0; }
