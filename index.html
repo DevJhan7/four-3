@@ -118,22 +118,38 @@
       transform: scale(1.3);
     }
 
+    /* Estilo para los GIFs */
     .gif-left, .gif-right {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 150px; /* Reducido a 150px */
-      height: auto; /* Mantiene la proporción */
+      width: 150px; /* Tamaño predeterminado para pantallas grandes */
+      height: auto;
       z-index: 1;
-}
-
-
-    .gif-left {
-      left: 20px;
     }
 
-    .gif-right {
-      right: 20px;
+    /* Ajustes para dispositivos móviles */
+    @media (max-width: 768px) {
+      .gif-left, .gif-right {
+        position: relative;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        left: auto;
+        right: auto;
+        width: 120px; /* Tamaño reducido en dispositivos móviles */
+        height: auto;  /* Mantener la proporción */
+        max-width: 100%; /* Asegura que no excedan el ancho de la pantalla */
+        max-height: 120px; /* Limitar la altura máxima para mantener el tamaño proporcional */
+      }
+
+      .arrow-btn {
+        font-size: 32px;
+      }
+    }
+
+    .gif-left img, .gif-right img {
+      width: 100%; /* Aseguramos que la imagen se ajuste al tamaño del contenedor */
+      height: auto; /* Mantener la proporción de la imagen */
     }
 
     .youtube-background {
@@ -149,24 +165,6 @@
     .audio-container {
       margin-top: 20px;
     }
-
-   /* Estilo para dispositivos móviles */
-    @media (max-width: 768px) {
-      .gif-left, .gif-right {
-        position: relative;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        left: auto;
-        right: auto;
-        width: 120px; /* Reducido a 120px en dispositivos móviles */
-        max-width: 100%; /* Asegura que no excedan el ancho de la pantalla */
-      }
-    
-      .arrow-btn {
-        font-size: 32px;
-      }
-    }
-
   </style>
 </head>
   
