@@ -128,6 +128,14 @@
       z-index: 1;
     }
 
+    .gif-left {
+      left: 10px;
+    }
+
+    .gif-right {
+      right: 10px;
+    }
+
     /* Ajustes para dispositivos móviles */
     @media (max-width: 768px) {
       .gif-left, .gif-right {
@@ -140,6 +148,9 @@
         height: auto;  /* Mantener la proporción */
         max-width: 100%; /* Asegura que no excedan el ancho de la pantalla */
         max-height: 120px; /* Limitar la altura máxima para mantener el tamaño proporcional */
+        display: block; /* Para que se alineen en una columna */
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .arrow-btn {
@@ -147,24 +158,26 @@
       }
     }
 
-    .gif-left img, .gif-right img {
-      width: 100%; /* Aseguramos que la imagen se ajuste al tamaño del contenedor */
-      height: auto; /* Mantener la proporción de la imagen */
+    /* Para pantallas grandes (PC), los GIFs deben estar a los costados */
+    @media (min-width: 769px) {
+      .gif-left, .gif-right {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 150px; /* Tamaño fijo en pantallas grandes */
+        height: auto;
+        z-index: 1;
+      }
+
+      .gif-left {
+        left: 10px;
+      }
+
+      .gif-right {
+        right: 10px;
+      }
     }
 
-    .youtube-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    .audio-container {
-      margin-top: 20px;
-    }
   </style>
 </head>
   
@@ -209,49 +222,4 @@
   </div>
 
   <script>
-    const phrases = [
-      "Tu sonrisa ilumina mi día ✨", "Me encanta cómo me haces reír 😂", "Eres mi lugar seguro 🏡",
-      "Tu voz me calma 💖", "Siempre me inspiras a ser mejor 🌟", "Tus abrazos son mi medicina 🫂",
-      "Tu paciencia me sorprende 😌", "Tienes el corazón más grande ❤️", "Me entiendes sin hablar 🧠",
-      "Siempre sabes qué decir 🗣️", "Tomas mi mano y todo está bien 🤝", "Compartimos sueños juntos 🌙",
-      "Amas con el alma 💞", "Eres divertido(a) sin esfuerzo 😄", "Tus ojitos son mágicos 👀"
-    ];
-
-    let index = 0;
-    const phraseEl = document.getElementById("phrase");
-    const dotsEl = document.getElementById("dots");
-
-    function renderPhrase() {
-      phraseEl.style.opacity = 0;
-      setTimeout(() => {
-        phraseEl.textContent = phrases[index];
-        phraseEl.style.opacity = 1;
-      }, 200);
-      renderDots();
-    }
-
-    function renderDots() {
-      dotsEl.innerHTML = '';
-      for (let i = 0; i < phrases.length; i++) {
-        const dot = document.createElement("div");
-        dot.classList.add("dot");
-        if (i === index) dot.classList.add("active");
-        dotsEl.appendChild(dot);
-      }
-    }
-
-    function nextPhrase() {
-      index = (index + 1) % phrases.length;
-      renderPhrase();
-    }
-
-    function prevPhrase() {
-      index = (index - 1 + phrases.length) % phrases.length;
-      renderPhrase();
-    }
-
-    renderPhrase();
-  </script>
-
-</body>
-</html>
+    const phrases =
