@@ -35,6 +35,10 @@
     overflow: hidden;
   }
 
+  h1 {
+    font-weight: bold;
+  }
+
   .intro-box, .things-box {
     padding: 20px;
     border-radius: 15px;
@@ -132,54 +136,28 @@
     margin: 0 10px;
   }
 
-  /* --- NUEVA COMETA --- */
-  .moving-dot-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
-
-  .moving-dot, .trail-dot {
+  /* 🪁 Bolita cometa con estela */
+  .moving-dot {
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    position: absolute;
-  }
-
-  .moving-dot {
     background-color: red;
+    position: absolute;
+    z-index: 10;
     animation: moveAround 6s linear infinite;
-    z-index: 3;
-  }
-
-  .trail-dot:nth-child(2) {
-    background-color: rgba(255, 0, 0, 0.5);
-    animation: moveAround 6s linear infinite;
-    animation-delay: -0.3s;
-    z-index: 2;
-  }
-
-  .trail-dot:nth-child(3) {
-    background-color: rgba(255, 0, 0, 0.3);
-    animation: moveAround 6s linear infinite;
-    animation-delay: -0.6s;
-    z-index: 1;
-  }
-
-  .trail-dot:nth-child(4) {
-    background-color: rgba(255, 0, 0, 0.1);
-    animation: moveAround 6s linear infinite;
-    animation-delay: -0.9s;
-    z-index: 0;
+    box-shadow:
+      0 0 10px rgba(255, 0, 0, 0.6),
+      0 0 20px rgba(255, 0, 0, 0.4),
+      0 0 30px rgba(255, 0, 0, 0.2);
+    filter: blur(0.5px);
   }
 
   @keyframes moveAround {
-    0% { top: 2px; left: 2px; }
-    25% { top: 2px; left: calc(100% - 17px); }
-    50% { top: calc(100% - 17px); left: calc(100% - 17px); }
-    75% { top: calc(100% - 17px); left: 2px; }
-    100% { top: 2px; left: 2px; }
+    0%   { top: 0; left: 0; }
+    25%  { top: 0; left: calc(100% - 15px); }
+    50%  { top: calc(100% - 15px); left: calc(100% - 15px); }
+    75%  { top: calc(100% - 15px); left: 0; }
+    100% { top: 0; left: 0; }
   }
   </style>
 </head>
@@ -187,7 +165,6 @@
 <body>
   <div class="card">
     <h1><strong>¡Feliz Aniversario, mi amor!</strong> ❤️</h1>
-
 
     <div class="intro-box">
       <p>Hoy celebramos 3 años juntos mi niña hermosa. Gracias por cada sonrisa que me sacas, cada cariño, y cada momento juntos. Te amo más de lo que las palabras pueden expresar.</p>
@@ -208,13 +185,8 @@
       <img class="gif-right" src="https://i.pinimg.com/originals/85/02/91/850291c8a4f7c3b924fa9cc7a2257482.gif" alt="gif-right">
     </div>
 
-    <!-- 🎈 Cometa mágica 🎈 -->
-    <div class="moving-dot-container">
-      <div class="moving-dot"></div>
-      <div class="trail-dot"></div>
-      <div class="trail-dot"></div>
-      <div class="trail-dot"></div>
-    </div>
+    <!-- 🪁 Cometa brillante -->
+    <div class="moving-dot"></div>
   </div>
 
   <div class="audio-container">
@@ -285,4 +257,5 @@
   </script>
 </body>
 </html>
+
 
