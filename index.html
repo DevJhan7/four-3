@@ -128,6 +128,8 @@
     width: 120px; /* Tamaño reducido */
     height: auto;
     z-index: 1;
+    max-width: 100%; /* Asegura que el gif se ajuste al contenedor */
+    max-height: 120px; /* Limita la altura */
   }
 
   .gif-left {
@@ -146,10 +148,11 @@
       margin-bottom: 20px;
       left: auto;
       right: auto;
-      width: 100px; /* Reducido para dispositivos móviles */
-      max-width: 100%;
-      max-height: 100px;
-      display: block; 
+      width: 80px; /* Ajuste para móviles */
+      max-width: 100%; /* Asegura que no se desborde */
+      height: auto;
+      max-height: 80px; /* Limita la altura */
+      display: block;
       margin-left: auto;
       margin-right: auto;
     }
@@ -173,6 +176,8 @@
       width: 120px; /* Tamaño reducido */
       height: auto;
       z-index: 1;
+      max-width: 100%;
+      max-height: 120px;
     }
 
     .gif-left {
