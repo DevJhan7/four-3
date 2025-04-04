@@ -15,7 +15,11 @@
     justify-content: center;
     font-family: 'Playfair Display', serif;
     margin: 0;
+    padding: 0;
+    color: #3b3a36;
+    position: relative;
     flex-direction: column;
+    overflow-x: hidden;
   }
 
   .card {
@@ -23,67 +27,133 @@
     border-radius: 25px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     max-width: 600px;
+    width: 100%;
     text-align: center;
     padding: 50px 40px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease-in-out;
     position: relative;
+    overflow: hidden;
   }
 
-  .things-box {
-    position: relative;
+  .intro-box, .things-box {
     background-color: rgba(255, 255, 255, 0.1);
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-    margin-top: 30px;
-    overflow: hidden;
+    margin-bottom: 30px;
+    max-height: 300px;
+    color: #3b3a36;
   }
 
-  .comet {
-    width: 15px;
-    height: 15px;
-    background-color: red;
-    border-radius: 50%;
-    position: absolute;
-    animation: moveComet 3s linear infinite;
+  .things-box .phrase {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in-out forwards;
   }
 
-  @keyframes moveComet {
-    0% { left: 0; top: 0; opacity: 1; }
-    25% { left: 80%; top: 20%; opacity: 0.8; }
-    50% { left: 40%; top: 60%; opacity: 0.6; }
-    75% { left: 80%; top: 80%; opacity: 0.4; }
-    100% { left: 0; top: 100%; opacity: 0; }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
   .pagination-dots {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 8px;
     margin-top: 30px;
   }
 
   .dot {
-    font-size: 20px;
-    transition: transform 0.3s;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ddd;
+    transition: background 0.3s, transform 0.3s;
   }
 
   .dot.active {
-    transform: scale(1.5);
+    background-color: #d4af37;
+    transform: scale(1.4);
+  }
+
+  .arrow-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #d4af37;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, color 0.3s;
+  }
+
+  .arrow-btn:hover {
+    color: #c98d1f;
+    transform: scale(1.3);
+  }
+
+  .audio-container {
+    margin-top: 20px;
+  }
+
+  /* Animación del punto */
+  .moving-dot {
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    animation: moveAround 6s linear infinite;
+  }
+
+  @keyframes moveAround {
+    0% { top: 20px; left: 20px; }
+    25% { top: 20px; left: calc(100% - 35px); }
+    50% { top: calc(100% - 35px); left: calc(100% - 35px); }
+    75% { top: calc(100% - 35px); left: 20px; }
+    100% { top: 20px; left: 20px; }
   }
   </style>
 </head>
+
 <body>
   <div class="card">
     <h1>¡Feliz Aniversario, mi amor! ❤️</h1>
+
+    <div class="intro-box">
+      <p>Hoy celebro con todo mi corazón estos 3 maravillosos años a tu lado. Gracias por cada sonrisa, cada abrazo, y cada momento juntos. Te amo más de lo que las palabras pueden expresar.</p>
+    </div>
+
     <div class="things-box">
       <div class="phrase" id="phrase">Tu sonrisa ilumina mi día ✨</div>
-      <div class="comet"></div>
-      <div class="pagination-dots" id="dots"></div>
+      <div class="pagination-dots">
+        <button class="arrow-btn" onclick="prevPhrase()">❤️</button>
+        <div id="dots" class="d-flex"></div>
+        <button class="arrow-btn" onclick="nextPhrase()">❤️</button>
+      </div>
     </div>
+
+    <div class="moving-dot"></div>
   </div>
+
+  <div class="audio-container">
+    <audio controls autoplay>
+      <source src="https://devjhan7.github.io/four-3/musiquita.mp3" type="audio/mpeg">
+      Tu navegador no soporta el elemento de audio.
+    </audio>      
+  </div>
+
   <script>
     const phrases = [
-      "Tu sonrisa ilumina mi día ✨", "Eres mi lugar seguro 🏡", "Tus abrazos son mi medicina 🫂"
+      "Tu sonrisa ilumina mi día ✨", "Me encanta cómo me haces reír 😂", "Eres mi lugar seguro 🏡",
+      "Tu voz me calma 💖", "Siempre me inspiras a ser mejor 🌟", "Tus abrazos son mi medicina 🫂",
+      "Tu paciencia me sorprende 😌", "Tienes el corazón más grande ❤️", "Me entiendes sin hablar 🧠",
+      "Siempre sabes qué decir 🗣️", "Tomas mi mano y todo está bien 🤝", "Compartimos sueños juntos 🌙",
+      "Amas con el alma 💞", "Eres divertido(a) sin esfuerzo 😄", "Tus ojitos son mágicos 👀"
     ];
 
     let index = 0;
@@ -91,7 +161,11 @@
     const dotsEl = document.getElementById("dots");
 
     function renderPhrase() {
-      phraseEl.textContent = phrases[index];
+      phraseEl.style.opacity = 0;
+      setTimeout(() => {
+        phraseEl.textContent = phrases[index];
+        phraseEl.style.opacity = 1;
+      }, 200);
       renderDots();
     }
 
@@ -100,7 +174,6 @@
       for (let i = 0; i < phrases.length; i++) {
         const dot = document.createElement("div");
         dot.classList.add("dot");
-        dot.innerHTML = i === index ? "🎶" : "🎵";
         if (i === index) dot.classList.add("active");
         dotsEl.appendChild(dot);
       }
@@ -111,10 +184,16 @@
       renderPhrase();
     }
 
-    setInterval(nextPhrase, 3000);
+    function prevPhrase() {
+      index = (index - 1 + phrases.length) % phrases.length;
+      renderPhrase();
+    }
+
     renderPhrase();
   </script>
+
 </body>
 </html>
+
 
 
