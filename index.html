@@ -133,11 +133,11 @@
   }
 
   @keyframes moveAround {
-    0% { top: 10px; left: 10px; }
-    25% { top: 10px; left: calc(100% - 25px); }
-    50% { top: calc(100% - 25px); left: calc(100% - 25px); }
-    75% { top: calc(100% - 25px); left: 10px; }
-    100% { top: 10px; left: 10px; }
+    0% { top: 5px; left: 5px; }
+    25% { top: 5px; left: calc(100% - 20px); }
+    50% { top: calc(100% - 20px); left: calc(100% - 20px); }
+    75% { top: calc(100% - 20px); left: 5px; }
+    100% { top: 5px; left: 5px; }
   }
   </style>
 </head>
@@ -177,12 +177,27 @@
 
   <script>
     const phrases = [
-      "Tu sonrisa ilumina mi día ✨", "Me encanta cómo me haces reír 😂", "Eres mi lugar seguro 🏡",
-      "Tu voz me calma 💖", "Siempre me inspiras a ser mejor 🌟", "Tus abrazos son mi medicina 🫂",
-      "Tu paciencia me sorprende 😌", "Tienes el corazón más grande ❤️", "Me entiendes sin hablar 🧠",
-      "Siempre sabes qué decir 🗣️", "Tomas mi mano y todo está bien 🤝", "Compartimos sueños juntos 🌙",
-      "Amas con el alma 💞", "Eres divertido(a) sin esfuerzo 😄", "Tus ojitos son mágicos 👀"
-    ];
+    "Tu sonrisa ilumina mi día ✨", "Me encanta cómo me haces reír 😂", "Eres mi lugar seguro 🏡",
+    "Tu voz me calma 💖", "Siempre me inspiras a ser mejor 🌟", "Tus abrazos son mi medicina 🫂",
+    "Tu paciencia me sorprende 😌", "Tienes el corazón más grande ❤️", "Me entiendes sin hablar 🧠",
+    "Siempre sabes qué decir 🗣️", "Tomas mi mano y todo está bien 🤝", "Compartimos sueños juntos 🌙",
+    "Amas con el alma 💞", "Eres divertido(a) sin esfuerzo 😄", "Tus ojitos son mágicos 👀",
+    "Tu risa es contagiosa 😆", "Me haces sentir especial cada día 💫", "Tu creatividad me sorprende 🎨",
+    "Eres increíblemente inteligente 🧠", "Tu generosidad no tiene límites 🎁", "Tienes un alma pura ✨",
+    "Siempre haces que los momentos sean mejores ⏳", "Tu amor por los pequeños detalles me enamora 💖",
+    "Tienes una forma de ver la vida que admiro 🌍", "Me haces sentir en casa donde sea que estemos 🏡",
+    "Tus abrazos son mi refugio 🫂", "Cada vez que hablas, aprendo algo nuevo 📚", "Me haces ver el mundo de una manera diferente 🌏",
+    "Me encanta cómo te preocupas por los demás 💖", "Tu pasión por la vida es contagiosa 🔥", "Eres la mejor compañía en cualquier aventura 🚀",
+    "Me haces sentir amado(a) sin decir una palabra 💓", "Tienes una energía que llena cualquier habitación ⚡", "Tu mirada dice más que mil palabras 👁️",
+    "Eres mi inspiración diaria ✨", "Tienes una fuerza interior que me sorprende 💪", "Tu apoyo es incondicional 🛡️",
+    "Tu sentido del humor es perfecto para mí 😂", "Eres tan auténtico(a) y eso me encanta 💎", "Siempre encuentras la belleza en todo 💐",
+    "Tu pasión por lo que amas es admirable 🔥", "Eres una persona increíblemente fiel 🐾", "Me encanta cómo te entregas por completo a lo que haces 💖",
+    "Tienes una capacidad de amar que nunca deja de asombrarme 💝", "Tu forma de ver la vida me inspira a ser mejor 🙌", "Me encanta cómo haces sentir especial a todos los que te rodean 🌟",
+    "Tu sinceridad es refrescante 🌿", "Eres un(a) gran oyente y eso significa mucho para mí 👂", "Me gusta cómo siempre encuentras tiempo para mí ⏰",
+    "Tienes un sentido de la moda que me encanta 👗", "Tu alegría ilumina mi día como el sol ☀️", "Cada día contigo es un regalo 🎁", "Eres un sueño hecho realidad 🌠",
+    "Me encanta cómo me haces sentir que soy suficiente 💖", "Tu bondad es algo que todos deberían conocer ✨", "Eres la razón de mi felicidad cada día 🥰"
+  ];
+
 
     let index = 0;
     const phraseEl = document.getElementById("phrase");
