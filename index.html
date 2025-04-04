@@ -31,17 +31,27 @@
     text-align: center;
     padding: 50px 40px;
     backdrop-filter: blur(10px);
-    transition: transform 0.3s ease-in-out;
     position: relative;
     overflow: hidden;
   }
 
-  .intro-box, .things-box {
+  .intro-box {
     background-color: rgba(255, 255, 255, 0.1);
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
     margin-bottom: 30px;
+    max-height: 300px;
+    overflow-y: auto; /* Habilita el scroll */
+    color: #3b3a36;
+  }
+
+  .things-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    margin-top: 30px;
     max-height: 300px;
     color: #3b3a36;
   }
@@ -98,7 +108,22 @@
     margin-top: 20px;
   }
 
-  /* Animación del punto */
+  .gif-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    position: relative;
+  }
+
+  .gif-left, .gif-right {
+    width: 100px;
+    height: auto;
+    max-width: 100%;
+    max-height: 120px;
+    margin: 0 10px;
+  }
+
   .moving-dot {
     width: 15px;
     height: 15px;
@@ -126,6 +151,7 @@
 
     <div class="intro-box">
       <p>Hoy celebro con todo mi corazón estos 3 maravillosos años a tu lado. Gracias por cada sonrisa, cada abrazo, y cada momento juntos. Te amo más de lo que las palabras pueden expresar.</p>
+      <p>Puedes seguir leyendo aquí...</p>
     </div>
 
     <div class="things-box">
@@ -135,6 +161,11 @@
         <div id="dots" class="d-flex"></div>
         <button class="arrow-btn" onclick="nextPhrase()">❤️</button>
       </div>
+    </div>
+
+    <div class="gif-container">
+      <img class="gif-left" src="https://i.pinimg.com/originals/d7/1b/34/d71b341af9242b69b3331aae8f968750.gif" alt="gif-left">
+      <img class="gif-right" src="https://i.pinimg.com/originals/85/02/91/850291c8a4f7c3b924fa9cc7a2257482.gif" alt="gif-right">
     </div>
 
     <div class="moving-dot"></div>
@@ -179,15 +210,8 @@
       }
     }
 
-    function nextPhrase() {
-      index = (index + 1) % phrases.length;
-      renderPhrase();
-    }
-
-    function prevPhrase() {
-      index = (index - 1 + phrases.length) % phrases.length;
-      renderPhrase();
-    }
+    function nextPhrase() { index = (index + 1) % phrases.length; renderPhrase(); }
+    function prevPhrase() { index = (index - 1 + phrases.length) % phrases.length; renderPhrase(); }
 
     renderPhrase();
   </script>
