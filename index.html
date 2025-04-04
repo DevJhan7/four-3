@@ -7,123 +7,164 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body {
-      background-color: #f7f3e9; /* Fondo suave */
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Playfair Display', serif;
-      margin: 0;
-      padding: 0;
-      color: #3b3a36;
-      position: relative;
-      flex-direction: column;
-    }
+  body {
+    background-color: #f7f3e9; /* Fondo suave */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
+    color: #3b3a36;
+    position: relative;
+    flex-direction: column;
+  }
 
-    .card {
-      background: linear-gradient(135deg, #d4af37, #f4c542); /* Colores dorados y cálidos */
-      border-radius: 25px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-      max-width: 600px;
-      width: 100%;
-      text-align: center;
-      padding: 50px 40px;
-      backdrop-filter: blur(10px);
-      transition: transform 0.3s ease-in-out;
-      position: relative;
-    }
+  .card {
+    background: linear-gradient(135deg, #d4af37, #f4c542); /* Colores dorados y cálidos */
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    padding: 50px 40px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+  }
 
-    h1 {
-      font-size: 32px;
-      color: #3b3a36;
-      margin-bottom: 30px;
-      text-align: center;
-      font-weight: 600;
-    }
+  h1 {
+    font-size: 32px;
+    color: #3b3a36;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 600;
+  }
 
-    .intro-box {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-      margin-bottom: 30px;
-      height: 300px;
-      overflow-y: scroll;
-      max-height: 300px;
-      color: #3b3a36;
-      font-size: 18px;
-    }
+  .intro-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    margin-bottom: 30px;
+    height: 300px;
+    overflow-y: scroll;
+    max-height: 300px;
+    color: #3b3a36;
+    font-size: 18px;
+  }
 
-    .things-box {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-      margin-top: 30px;
-      max-height: 300px;
-      color: #3b3a36;
-    }
+  .things-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    margin-top: 30px;
+    max-height: 300px;
+    color: #3b3a36;
+  }
 
-    .things-box .phrase {
-      font-size: 25px;
-      font-weight: 600;
-      color: #3b3a36;
-      margin-bottom: 40px;
+  .things-box .phrase {
+    font-size: 25px;
+    font-weight: 600;
+    color: #3b3a36;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
       opacity: 0;
-      animation: fadeIn 0.6s ease-in-out forwards;
     }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+    to {
+      opacity: 1;
     }
+  }
 
-    .pagination-dots {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      margin-top: 30px;
-    }
+  .pagination-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 30px;
+  }
 
-    .dot {
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background-color: #ddd;
-      transition: background 0.3s, transform 0.3s;
-    }
+  .dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ddd;
+    transition: background 0.3s, transform 0.3s;
+  }
 
-    .dot.active {
-      background-color: #d4af37;
-      transform: scale(1.4);
+  .dot.active {
+    background-color: #d4af37;
+    transform: scale(1.4);
+  }
+
+  .arrow-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #d4af37;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, color 0.3s;
+  }
+
+  .arrow-btn:hover {
+    color: #c98d1f;
+    transform: scale(1.3);
+  }
+
+  /* Estilo para los GIFs */
+  .gif-left, .gif-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px; /* Tamaño fijo para pantallas grandes */
+    height: auto;
+    z-index: 1;
+  }
+
+  .gif-left {
+    left: 10px;
+  }
+
+  .gif-right {
+    right: 10px;
+  }
+
+  /* Ajustes para dispositivos móviles */
+  @media (max-width: 768px) {
+    .gif-left, .gif-right {
+      position: relative;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      left: auto;
+      right: auto;
+      width: 120px; /* Tamaño reducido en dispositivos móviles */
+      height: auto;  /* Mantener la proporción */
+      max-width: 100%; /* Asegura que no excedan el ancho de la pantalla */
+      max-height: 120px; /* Limitar la altura máxima para mantener el tamaño proporcional */
+      display: block; /* Para que se alineen en una columna */
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .arrow-btn {
-      background: none;
-      border: none;
-      font-size: 28px;
-      color: #d4af37;
-      cursor: pointer;
-      transition: transform 0.3s ease-in-out, color 0.3s;
+      font-size: 32px;
     }
+  }
 
-    .arrow-btn:hover {
-      color: #c98d1f;
-      transform: scale(1.3);
-    }
-
-    /* Estilo para los GIFs */
+  /* Para pantallas grandes (PC), los GIFs deben estar a los costados */
+  @media (min-width: 769px) {
     .gif-left, .gif-right {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 150px; /* Tamaño predeterminado para pantallas grandes */
+      width: 200px; /* Tamaño ajustado para pantallas grandes */
       height: auto;
       z-index: 1;
     }
@@ -135,50 +176,10 @@
     .gif-right {
       right: 10px;
     }
+  }
 
-    /* Ajustes para dispositivos móviles */
-    @media (max-width: 768px) {
-      .gif-left, .gif-right {
-        position: relative;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        left: auto;
-        right: auto;
-        width: 120px; /* Tamaño reducido en dispositivos móviles */
-        height: auto;  /* Mantener la proporción */
-        max-width: 100%; /* Asegura que no excedan el ancho de la pantalla */
-        max-height: 120px; /* Limitar la altura máxima para mantener el tamaño proporcional */
-        display: block; /* Para que se alineen en una columna */
-        margin-left: auto;
-        margin-right: auto;
-      }
+</style>
 
-      .arrow-btn {
-        font-size: 32px;
-      }
-    }
-
-    /* Para pantallas grandes (PC), los GIFs deben estar a los costados */
-    @media (min-width: 769px) {
-      .gif-left, .gif-right {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 150px; /* Tamaño fijo en pantallas grandes */
-        height: auto;
-        z-index: 1;
-      }
-
-      .gif-left {
-        left: 10px;
-      }
-
-      .gif-right {
-        right: 10px;
-      }
-    }
-
-  </style>
 </head>
   
 <body>
