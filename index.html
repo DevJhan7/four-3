@@ -120,11 +120,13 @@
 
     .gif-left, .gif-right {
       position: absolute;
-      width: 200px;
-      height: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 150px; /* Reducido a 150px */
+      height: auto; /* Mantiene la proporción */
       z-index: 1;
-      transition: all 0.3s ease;
-    }
+}
+
 
     .gif-left {
       left: 20px;
@@ -150,14 +152,16 @@
 
     /* Estilo para dispositivos móviles */
     @media (max-width: 768px) {
-      .gif-left, .gif-right {
-        width: 100px;
+        .gif-left, .gif-right {
         position: relative;
         margin-top: 20px;
         margin-bottom: 20px;
         left: auto;
         right: auto;
+        width: 20px; /* Reducido a 120px en dispositivos móviles */
       }
+}
+
 
       .arrow-btn {
         font-size: 32px;
