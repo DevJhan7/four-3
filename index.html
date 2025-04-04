@@ -61,17 +61,16 @@
     margin-bottom: 40px;
     opacity: 0;
     animation: fadeIn 0.6s ease-in-out forwards;
-    word-wrap: break-word; /* Permite que las palabras largas se ajusten dentro del contenedor */
-    overflow-wrap: break-word; /* Para asegurar el ajuste en todos los casos */
-    max-width: 100%; /* No dejar que el contenedor se haga más grande que su espacio disponible */
-    white-space: normal; /* Permite que las líneas se ajusten en varias filas */
-}
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    white-space: normal;
+  }
 
-.things-box {
-  font-size: 1.2rem; /* Tamaño de fuente estándar */
-  line-height: 1.5; /* Espaciado entre las líneas de texto */
-}
-
+  .things-box {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
 
   @keyframes fadeIn {
     from { opacity: 0; }
@@ -133,13 +132,46 @@
     margin: 0 10px;
   }
 
-  .moving-dot {
+  /* --- NUEVA COMETA --- */
+  .moving-dot-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .moving-dot, .trail-dot {
     width: 15px;
     height: 15px;
-    background-color: red;
     border-radius: 50%;
     position: absolute;
+  }
+
+  .moving-dot {
+    background-color: red;
     animation: moveAround 6s linear infinite;
+    z-index: 3;
+  }
+
+  .trail-dot:nth-child(2) {
+    background-color: rgba(255, 0, 0, 0.5);
+    animation: moveAround 6s linear infinite;
+    animation-delay: -0.3s;
+    z-index: 2;
+  }
+
+  .trail-dot:nth-child(3) {
+    background-color: rgba(255, 0, 0, 0.3);
+    animation: moveAround 6s linear infinite;
+    animation-delay: -0.6s;
+    z-index: 1;
+  }
+
+  .trail-dot:nth-child(4) {
+    background-color: rgba(255, 0, 0, 0.1);
+    animation: moveAround 6s linear infinite;
+    animation-delay: -0.9s;
+    z-index: 0;
   }
 
   @keyframes moveAround {
@@ -175,7 +207,13 @@
       <img class="gif-right" src="https://i.pinimg.com/originals/85/02/91/850291c8a4f7c3b924fa9cc7a2257482.gif" alt="gif-right">
     </div>
 
-    <div class="moving-dot"></div>
+    <!-- 🎈 Cometa mágica 🎈 -->
+    <div class="moving-dot-container">
+      <div class="moving-dot"></div>
+      <div class="trail-dot"></div>
+      <div class="trail-dot"></div>
+      <div class="trail-dot"></div>
+    </div>
   </div>
 
   <div class="audio-container">
@@ -226,7 +264,7 @@
     }
 
     function renderDots() {
-      const visibleDots = 5; // Número de puntos visibles en pantalla
+      const visibleDots = 5;
       const start = Math.max(0, index - Math.floor(visibleDots / 2));
       const end = Math.min(phrases.length, start + visibleDots);
 
@@ -246,3 +284,4 @@
   </script>
 </body>
 </html>
+
