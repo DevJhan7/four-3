@@ -35,25 +35,24 @@
     overflow: hidden;
   }
 
-  .intro-box {
-    background-color: rgba(255, 255, 255, 0.1);
+  .intro-box, .things-box {
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-    margin-bottom: 30px;
     max-height: 300px;
-    overflow-y: auto; /* Habilita el scroll */
+    overflow-y: auto;
     color: #3b3a36;
+    transition: background 0.5s ease-in-out;
+  }
+
+  .intro-box {
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-bottom: 30px;
   }
 
   .things-box {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    background-color: rgba(255, 255, 255, 0.2);
     margin-top: 30px;
-    max-height: 300px;
-    color: #3b3a36;
   }
 
   .things-box .phrase {
@@ -130,17 +129,15 @@
     background-color: red;
     border-radius: 50%;
     position: absolute;
-    top: 20px;
-    left: 20px;
     animation: moveAround 6s linear infinite;
   }
 
   @keyframes moveAround {
-    0% { top: 20px; left: 20px; }
-    25% { top: 20px; left: calc(100% - 35px); }
-    50% { top: calc(100% - 35px); left: calc(100% - 35px); }
-    75% { top: calc(100% - 35px); left: 20px; }
-    100% { top: 20px; left: 20px; }
+    0% { top: 10px; left: 10px; }
+    25% { top: 10px; left: calc(100% - 25px); }
+    50% { top: calc(100% - 25px); left: calc(100% - 25px); }
+    75% { top: calc(100% - 25px); left: 10px; }
+    100% { top: 10px; left: 10px; }
   }
   </style>
 </head>
@@ -154,7 +151,7 @@
       <p>Puedes seguir leyendo aquí...</p>
     </div>
 
-    <div class="things-box">
+    <div class="things-box" id="thingsBox">
       <div class="phrase" id="phrase">Tu sonrisa ilumina mi día ✨</div>
       <div class="pagination-dots">
         <button class="arrow-btn" onclick="prevPhrase()">❤️</button>
@@ -190,12 +187,16 @@
     let index = 0;
     const phraseEl = document.getElementById("phrase");
     const dotsEl = document.getElementById("dots");
+    const thingsBox = document.getElementById("thingsBox");
+
+    const colors = ["#f4c542", "#f7b733", "#ff9f1c", "#ff6b6b", "#6a0572", "#0b6e4f", "#1e3d59"];
 
     function renderPhrase() {
       phraseEl.style.opacity = 0;
       setTimeout(() => {
         phraseEl.textContent = phrases[index];
         phraseEl.style.opacity = 1;
+        thingsBox.style.backgroundColor = colors[index % colors.length];
       }, 200);
       renderDots();
     }
