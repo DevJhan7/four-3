@@ -222,4 +222,49 @@
   </div>
 
   <script>
-    const phrases =
+    const phrases = [
+      "Tu sonrisa ilumina mi día ✨", "Me encanta cómo me haces reír 😂", "Eres mi lugar seguro 🏡",
+      "Tu voz me calma 💖", "Siempre me inspiras a ser mejor 🌟", "Tus abrazos son mi medicina 🫂",
+      "Tu paciencia me sorprende 😌", "Tienes el corazón más grande ❤️", "Me entiendes sin hablar 🧠",
+      "Siempre sabes qué decir 🗣️", "Tomas mi mano y todo está bien 🤝", "Compartimos sueños juntos 🌙",
+      "Amas con el alma 💞", "Eres divertido(a) sin esfuerzo 😄", "Tus ojitos son mágicos 👀"
+    ];
+
+    let index = 0;
+    const phraseEl = document.getElementById("phrase");
+    const dotsEl = document.getElementById("dots");
+
+    function renderPhrase() {
+      phraseEl.style.opacity = 0;
+      setTimeout(() => {
+        phraseEl.textContent = phrases[index];
+        phraseEl.style.opacity = 1;
+      }, 200);
+      renderDots();
+    }
+
+    function renderDots() {
+      dotsEl.innerHTML = '';
+      for (let i = 0; i < phrases.length; i++) {
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        if (i === index) dot.classList.add("active");
+        dotsEl.appendChild(dot);
+      }
+    }
+
+    function nextPhrase() {
+      index = (index + 1) % phrases.length;
+      renderPhrase();
+    }
+
+    function prevPhrase() {
+      index = (index - 1 + phrases.length) % phrases.length;
+      renderPhrase();
+    }
+
+    renderPhrase();
+  </script>
+
+</body>
+</html>
